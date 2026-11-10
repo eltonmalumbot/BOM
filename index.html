@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="BOM · Authorized OTP Verification Security Lab">
+  <title>BOM — OTP Security Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="identity"><div class="mark">B<span>◈</span>M</div><div class="identity-caption">SECURITY LAB <span class="tiny">/ v1.0</span></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav active" href="#dashboard"><span>◫</span> Dashboard <i>01</i></a>
+    <a class="nav" href="#providers"><span>▦</span> Providers <i>05</i></a>
+    <a class="nav" href="#activity"><span>▤</span> Activity log</a>
+    <div class="nav-label second">SYSTEM</div>
+    <a class="nav" href="#security"><span>◇</span> Security policy</a>
+    <a class="nav" href="https://github.com/eltonmalumbot/BOM" target="_blank" rel="noopener noreferrer"><span>↗</span> GitHub repo</a>
+    <div class="side-bottom"><div class="live-dot"></div><div><strong>SECURE MODE</strong><small>Authorized verification only</small></div></div>
+  </aside>
+  <main class="main" id="dashboard">
+    <header class="top"><div class="crumb">WORKSPACE <span>/</span> <strong>OVERVIEW</strong></div><div class="top-right"><span class="clock" id="clock">--:--:-- WIB</span><div class="avatar">B</div></div></header>
+    <section class="page-intro"><div><div class="eyebrow"><span class="line"></span> OPERATOR CONSOLE / 001</div><h1>OTP Security <em>Lab.</em></h1><p>One dashboard to monitor authorized verification. Built for real API integration with strict safety controls.</p></div><div class="status" id="status"><span class="status-dot"></span><span>CHECKING CONFIG</span></div></section>
+    <section class="metrics" aria-label="Ringkasan sesi"><article class="metric"><span>REQUESTS THIS SESSION</span><div class="metric-value" id="total">00 <span>↗</span></div><small>Requests submitted locally</small></article><article class="metric"><span>SUCCESSFUL SENDS</span><div class="metric-value" id="success">00 <span>✓</span></div><small>Provider acknowledged</small></article><article class="metric"><span>FAILED REQUESTS</span><div class="metric-value" id="failed">00 <span>↘</span></div><small>Failed or blocked requests</small></article><article class="metric"><span>PROTECTION LAYER</span><div class="metric-value secure">ACTIVE <span>●</span></div><small>Allowlist + 15 min cooldown</small></article></section>
+    <div class="content-grid"><section class="panel action-panel"><div class="panel-head"><div><div class="section-tag">01 / CONTROL CENTER</div><h2>Verification console</h2></div><span class="panel-icon">⌁</span></div><p class="panel-desc">Request a single real SMS OTP for an explicitly allowlisted number. Each number has a shared 15-minute send cooldown.</p>
+      <form id="otp-form"><label for="admin-key">OPERATOR ACCESS KEY</label><div class="input-wrap"><span>⌘</span><input type="password" id="admin-key" minlength="24" autocomplete="off" placeholder="Enter authorized access key" required></div>
+      <label for="phone">AUTHORIZED MOBILE NUMBER</label><div class="input-wrap"><span>+62</span><input id="phone" type="tel" autocomplete="tel" placeholder="0812 3456 7890" required></div><div class="field-hint">Only numbers added by the administrator are accepted.</div>
+      <button class="primary" type="submit" id="send-button"><span>REQUEST SINGLE OTP</span><span>↗</span></button></form>
+      <div class="separator"><span>VERIFY RECEIVED CODE</span></div>
+      <form id="check-form"><label for="otp">ONE-TIME PASSCODE</label><div class="input-wrap"><span>⌑</span><input id="otp" type="text" inputmode="numeric" pattern="[0-9]{4,10}" autocomplete="one-time-code" maxlength="10" placeholder="Enter received OTP" required></div><button class="secondary" type="submit" id="check-button">VERIFY CODE <span>→</span></button></form>
+      <p id="feedback" class="feedback" role="status" aria-live="polite">Ready for operator input.</p>
+    </section>
+    <section class="panel providers-panel" id="providers"><div class="panel-head"><div><div class="section-tag">02 / CONNECTIONS</div><h2>Provider overview</h2></div><span class="microbadge">05 REFERENCES</span></div><p class="panel-desc">Original project's provider names, displayed for security research only. Direct request endpoints are intentionally disabled.</p><div class="provider-list">
+      <div class="provider"><div class="provider-icon">A</div><div class="provider-meta"><strong>AdaKami</strong><span>Reference · Direct API disabled</span></div><span class="pill off">REFERENCE</span></div>
+      <div class="provider"><div class="provider-icon">I</div><div class="provider-meta"><strong>Indosaku</strong><span>Reference · Direct API disabled</span></div><span class="pill off">REFERENCE</span></div>
+      <div class="provider"><div class="provider-icon">K</div><div class="provider-meta"><strong>KrediOne</strong><span>Reference · Direct API disabled</span></div><span class="pill off">REFERENCE</span></div>
+      <div class="provider"><div class="provider-icon">R</div><div class="provider-meta"><strong>RupiahCepat</strong><span>Reference · Direct API disabled</span></div><span class="pill off">REFERENCE</span></div>
+      <div class="provider"><div class="provider-icon">N</div><div class="provider-meta"><strong>KreditNavigator</strong><span>Reference · Direct API disabled</span></div><span class="pill off">REFERENCE</span></div>
+    </div><div class="real-provider"><div class="real-icon">↗</div><div><strong>TWILIO VERIFY</strong><p>Supported live verification provider</p></div><span class="pill" id="twilio-status">CHECKING</span></div></section></div>
+    <section class="panel activity" id="activity"><div class="panel-head"><div><div class="section-tag">03 / DIAGNOSTICS</div><h2>Activity terminal</h2></div><button class="clear-button" id="clear-log" type="button">CLEAR LOG <span>×</span></button></div><div class="terminal-head"><span class="dots"><i></i><i></i><i></i></span><span>bom / operator-session / activity.log</span><span>● LOCAL</span></div><div class="terminal" id="log" role="log" aria-live="polite"><div class="log-line"><span class="log-time">[ SYSTEM ]</span><span class="log-info">BOM initialized. Waiting for operator action...</span></div></div></section>
+    <section id="security" class="bottom-note"><div class="note-icon">◈</div><p><strong>Built for authorized verification.</strong> No bulk OTP requests, third-party endpoint abuse, or unauthorized number targeting. Session stats and logs stay in this browser tab.</p><span>© BOM SECURITY LAB</span></section>
+  </main>
+</div>
+</body>
+</html>
